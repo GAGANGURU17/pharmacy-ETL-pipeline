@@ -44,6 +44,7 @@ pharmacy-etl/
 ├── notebooks/         # Jupyter notebooks
 ├── tests/            # Test suite
 └── setup.py         # Package configuration
+```
 
 ## Technologies
 - Python 3.7+
