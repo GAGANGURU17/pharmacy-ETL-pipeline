@@ -1,7 +1,29 @@
 # Pharmacy ETL Pipeline
 
-A comprehensive ETL (Extract, Transform, Load) pipeline for processing pharmacy data using PySpark.
+A comprehensive ETL (Extract, Transform, Load) pipeline for pharmacy data management, built with Python and PySpark. This project handles the complete data lifecycle from synthetic data generation to warehouse storage and analytics.
 
+## Features
+- Synthetic Data Generation
+  
+  - Customer profiles with demographics and insurance info
+  - Inventory management with product details
+  - Sales transactions and history
+- ETL Pipeline
+  
+  - Data extraction from multiple sources
+  - Advanced data transformation and cleaning
+  - Optimized data warehouse loading
+- Data Quality
+  
+  - Comprehensive validation checks
+  - Null value handling
+  - Duplicate detection
+  - Data consistency verification
+- Analytics
+  
+  - Interactive dashboards
+  - Data exploration notebooks
+  - Performance metrics
 ## Project Structure
 ```
 pharmacy-etl/
@@ -22,129 +44,61 @@ pharmacy-etl/
 ├── notebooks/         # Jupyter notebooks
 ├── tests/            # Test suite
 └── setup.py         # Package configuration
-```
 
-## Features
-- Synthetic data generation for testing and development
-- Multi-source data extraction (CSV, JSON, Database)
-- Advanced data cleaning and transformation
-- Dimensional modeling for analytics
-- Scalable data loading with error handling
-- Comprehensive logging system
-- Interactive analytics dashboard
-- Full test coverage
-
-## Prerequisites
-- Python 3.8+
-- Apache Spark 3.x
-- Java 8+ (for Spark)
-- Virtual environment (recommended)
-
+## Technologies
+- Python 3.7+
+- PySpark
+- Pandas
+- Faker (for synthetic data)
+- Jupyter Notebooks
 ## Installation
-
-1. Clone the repository:
 ```bash
 git clone <repository-url>
 cd pharmacy-etl
-```
-
-2. Create and activate virtual environment:
-```bash
-python -m venv venv
-.\venv\Scripts\activate  # Windows
-```
-
-3. Install dependencies:
-```bash
-pip install -e ".[dev,notebook]"
-```
-
-## Configuration
-1. Copy example configuration:
-```bash
-copy config\config.example.py config\config.py
-```
-
-2. Update configuration parameters in `config.py`:
-- Database credentials
-- File paths
-- Spark settings
-- Logging preferences
+pip install -r requirements.txt
+ ```
 
 ## Usage
-
-### Running the ETL Pipeline
+1. Generate synthetic data:
 ```bash
-python src/main.py
+python -m src.data_generators.generate_all
+ ```
 ```
 
-### Data Generation
+2. Run ETL pipeline:
 ```bash
-python src/data_generators/generate_all.py
+python -m src.main
+ ```
+
+3. View analytics:
+```bash
+jupyter notebook notebooks/analytics_dashboard.ipynb
+ ```
 ```
 
-### Running Tests
-```bash
-pytest tests/
-```
-
-### Analytics Dashboard
-1. Start Jupyter server:
-```bash
-jupyter notebook
-```
-2. Open `notebooks/analytics_dashboard.ipynb`
-
-## Data Model
-- **Fact Tables**
-  - Sales transactions
-  - Inventory movements
-- **Dimension Tables**
-  - Time
-  - Customer
-  - Product
-  - Store
-  - Employee
-
-## Error Handling
-- Comprehensive logging
-- Error recovery mechanisms
-- Data validation checks
-- Transaction management
-
-## Performance Optimization
-- Parallel processing
-- Data partitioning
-- Caching strategies
-- Resource management
-
+## Data Flow
+1. Data Generation → data/raw/
+   
+   - Customer profiles
+   - Inventory records
+   - Sales transactions
+2. Processing → data/processed/
+   
+   - Data cleaning
+   - Validation
+   - Transformation
+3. Warehouse → data/warehouse/
+   
+   - Dimensional modeling
+   - Analytics-ready datasets
 ## Contributing
 1. Fork the repository
-2. Create feature branch
-3. Commit changes
-4. Push to branch
-5. Create Pull Request
-
-## Testing
-- Unit tests
-- Integration tests
-- Data quality tests
-- Performance tests
-
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 ## License
 MIT License
 
-## Support
-For support and questions, please contact:
-- Email: gaganguru94@gmail.com
-- Issues: GitHub Issues
-
-## Authors
-- Gagan N
-
-## Acknowledgments
-- Apache Spark community
-- Python community
-- Contributors and testers
-
-        
+## Contact
+For questions and support, please open an issue in the repository.
