@@ -1,0 +1,39 @@
+pharmacy-etl/ 
+ ├── config/ 
+ │   ├── config.py 
+ │   └── logging_config.py 
+ ├── data/ 
+ │   ├── raw/ 
+ │   ├── processed/ 
+ │   └── warehouse/ 
+ ├── src/ 
+ │   ├── data_generators/ 
+ │   │   ├── __init__.py 
+ │   │   ├── sales_generator.py 
+ │   │   ├── inventory_generator.py 
+ │   │   └── customer_generator.py 
+ │   ├── extraction/ 
+ │   │   ├── __init__.py 
+ │   │   └── data_extractors.py 
+ │   ├── transformation/ 
+ │   │   ├── __init__.py 
+ │   │   ├── data_cleaner.py 
+ │   │   └── data_transformer.py 
+ │   ├── loading/ 
+ │   │   ├── __init__.py 
+ │   │   └── data_loader.py 
+ │   ├── utils/ 
+ │   │   ├── __init__.py 
+ │   │   └── helpers.py 
+ │   └── main.py 
+ ├── notebooks/ 
+ │   ├── data_exploration.ipynb 
+ │   └── analytics_dashboard.ipynb 
+ ├── tests/ 
+ │   ├── __init__.py 
+ │   ├── test_extraction.py 
+ │   ├── test_transformation.py 
+ │   └── test_loading.py 
+ ├── requirements.txt 
+ ├── setup.py 
+ └── README.md

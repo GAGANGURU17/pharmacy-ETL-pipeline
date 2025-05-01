@@ -1,0 +1,138 @@
+# Pharmacy ETL Project Execution Procedures
+
+This document outlines the execution procedures for the Pharmacy ETL (Extract, Transform, Load) pipeline.
+
+## Prerequisites
+
+1. **Environment Setup**
+   
+   - Python 3.7+ installed
+   - PySpark and required dependencies installed
+   - Java 8+ installed (required for Spark)
+
+2. **Configuration**
+   
+   - Verify configuration in `config/config.py`
+   - Ensure data directories exist (raw, processed, warehouse)
+   - Check logging configuration in `config/logging_config.py`
+
+## Execution Steps
+
+### 1. Data Preparation
+
+```bash
+cd c:\Users\uih12328\Desktop\RNG\pharmacy-etl
+python -m src.utils.data_generator
+```
+
+This will generate sample data in the raw data directory if needed for testing.
+
+### 2. Run ETL Pipeline 
+
+#### Option 1: Full Pipeline
+
+```bash
+cd c:\Users\uih12328\Desktop\RNG\pharmacy-etl
+python -m src.main
+```
+
+This executes the complete ETL process:
+
+- Extracts data from source files
+- Transforms and cleans the data
+- Loads data into the warehouse 
+
+#### Option 2: Individual Components
+
+For extraction only:
+```bash
+python -m src.extraction.run_extraction
+```
+
+For transformation only:
+```bash
+python -m src.transformation.run_transformation
+```
+
+For loading only:
+```bash
+python -m src.loading.run_loading
+```
+
+### 3. Run Analytics Dashboard
+
+```bash
+cd c:\Users\uih12328\Desktop\RNG\pharmacy-etl\notebooks
+jupyter notebook analytics_dashboard.ipynb
+```
+
+Execute the notebook cells to launch the interactive dashboard.
+
+## Monitoring and Logging
+
+- Logs are stored in the `logs` directory
+- Check `etl.log` for detailed execution information
+- Performance metrics are captured in the logs
+
+## Error Handling
+
+The pipeline includes robust error handling:
+
+- Retry mechanism for transient failures
+- Validation of data quality
+- Comprehensive error reporting
+
+## Advanced Features
+
+### Parallel Processing
+
+The main ETL pipeline supports parallel processing for improved performance:
+
+```bash
+python -m src.main --parallel=True
+```
+
+### Performance Monitoring
+
+Enable detailed performance monitoring:
+
+```bash
+python -m src.main --monitor_performance=True
+```
+
+### Data Quality Validation
+
+Run data quality checks independently:
+
+```bash
+python -m src.utils.data_quality_check
+```
+
+## Troubleshooting
+
+1. **Spark Session Issues**
+   
+   - Verify Java installation: `java -version`
+   - Check Spark configuration in `config/config.py`
+
+2. **Missing Data Files**
+   
+   - Ensure raw data files exist in the configured directory
+   - Run data generator if needed
+
+3. **Performance Issues**
+   
+   - Adjust Spark configuration parameters
+   - Consider increasing executor memory
+
+4. **Data Quality Errors**
+   
+   - Check validation logs for specific issues
+   - Adjust validation thresholds if needed
+
+## Maintenance
+
+- Regular cleanup of processed data: `python -m src.utils.cleanup --older-than=30`
+- Backup warehouse data: `python -m src.utils.backup`
+
+        Too many current requests. Your queue position is 1. Please wait for a while or switch to other models for a smoother experience.
