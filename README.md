@@ -52,29 +52,24 @@ pharmacy-etl/
 - Faker (for synthetic data)
 - Jupyter Notebooks
 ## Installation
-```bash
+
 git clone <repository-url>
 cd pharmacy-etl
 pip install -r requirements.txt
- ```
+
 
 ## Usage
 1. Generate synthetic data:
-```bash
 python -m src.data_generators.generate_all
- ```
-```
+
 
 2. Run ETL pipeline:
-```bash
 python -m src.main
- ```
+
 
 3. View analytics:
-```bash
 jupyter notebook notebooks/analytics_dashboard.ipynb
- ```
-```
+
 
 ## Data Flow
 1. Data Generation → data/raw/
@@ -97,6 +92,7 @@ jupyter notebook notebooks/analytics_dashboard.ipynb
 3. Commit your changes
 4. Push to the branch
 5. Create a Pull Request
+
 ## License
 MIT License
 
