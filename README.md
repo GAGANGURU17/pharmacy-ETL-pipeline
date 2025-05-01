@@ -136,11 +136,11 @@ MIT License
 
 ## Support
 For support and questions, please contact:
-- Email: [your-email]
+- Email: gaganguru94@gmail.com
 - Issues: GitHub Issues
 
 ## Authors
-- [Your Name]
+- Gagan N
 
 ## Acknowledgments
 - Apache Spark community
