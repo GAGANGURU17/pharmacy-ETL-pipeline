@@ -1,0 +1,147 @@
+
+
+
+          
+# Pharmacy ETL Pipeline: Step-by-Step Flow
+
+After examining your project, I can see you have a comprehensive ETL (Extract, Transform, Load) pipeline for processing pharmacy data. Here's how the system works:
+
+## Project Overview
+
+This is a pharmacy data processing pipeline that:
+- Generates synthetic pharmacy data (sales, inventory, customers, etc.)
+- Extracts data from various sources
+- Transforms and cleans the data
+- Loads the processed data into a data warehouse
+- Provides analytics capabilities through dashboards
+
+## Step-by-Step Flow
+
+### 1. Environment Setup
+- Install Python 3.8+ and dependencies
+- Set up Apache Spark environment (Java 8+ required)
+- Configure database connections and data directories
+
+### 2. Data Generation (Optional)
+```bash
+python -m src.utils.data_generator
+```
+- Creates synthetic pharmacy data including:
+  - Sales transactions
+  - Inventory records
+  - Customer information
+  - Product data
+  - Prescription records
+
+### 3. ETL Pipeline Execution
+```bash
+python -m src.main
+```
+
+The pipeline runs through these phases:
+
+#### a. Extraction Phase
+- `PharmacyDataExtractor` pulls data from configured sources
+- Data is validated during extraction
+- Performance is monitored if enabled
+
+#### b. Cleaning Phase
+- `DataCleaner` processes each dataset:
+  - Handles missing values
+  - Cleans string columns
+  - Standardizes formats
+
+#### c. Transformation Phase
+- `DataTransformer` creates dimensional model:
+  - Time dimension (from transaction dates)
+  - Customer dimension
+  - Product dimension
+  - Sales fact table
+- Can run in parallel or sequential mode
+
+#### d. Loading Phase
+- `DataLoader` loads the transformed data to the warehouse
+- Dimensions are loaded first, then fact tables
+- Data is stored in the configured warehouse location
+
+### 4. Performance Monitoring
+- The `PerformanceMonitor` tracks execution times
+- Metrics are logged for each operation
+- Summary report is generated at the end
+
+### 5. Analytics Dashboard
+```bash
+cd notebooks
+jupyter notebook analytics_dashboard.ipynb
+```
+- Interactive dashboard for data visualization
+- Features:
+  - Sales monitoring
+  - Product performance analysis
+  - Customer segmentation
+  - Inventory management
+  - Prescription trends
+
+## Data Flow Diagram
+
+```
+Raw Data Sources → Extraction → Cleaning → Transformation → Loading → Data Warehouse → Analytics Dashboard
+```
+
+## Key Components
+
+1. **Configuration** (`config/config.py`):
+   - Defines data directories, database connections, and processing parameters
+
+2. **Main Pipeline** (`src/main.py`):
+   - Orchestrates the entire ETL process
+   - Handles parallel processing and performance monitoring
+
+3. **Data Generators** (`src/data_generators/`):
+   - Creates realistic synthetic data for testing and development
+
+4. **Extraction Components** (`src/extraction/`):
+   - Pulls data from various sources (CSV, databases)
+
+5. **Transformation Logic** (`src/transformation/`):
+   - Cleans and transforms data into dimensional model
+
+6. **Loading Modules** (`src/loading/`):
+   - Loads processed data into the warehouse
+
+7. **Utilities** (`src/utils/`):
+   - Performance monitoring
+   - Logging
+   - Helper functions
+
+8. **Analytics** (`notebooks/`):
+   - Interactive dashboards for data analysis
+
+## Running the Pipeline
+
+1. Generate data (if needed):
+   ```bash
+   python -m src.utils.data_generator
+   ```
+
+2. Run the full pipeline:
+   ```bash
+   python -m src.main
+   ```
+
+3. Or run individual components:
+   ```bash
+   python -m src.extraction.run_extraction
+   python -m src.transformation.run_transformation
+   python -m src.loading.run_loading
+   ```
+
+4. Launch the analytics dashboard:
+   ```bash
+   cd notebooks
+   jupyter notebook analytics_dashboard.ipynb
+   ```
+
+This pipeline is designed with scalability and performance in mind, featuring parallel processing capabilities, comprehensive error handling, and detailed performance monitoring.
+
+        Too many current requests. Your queue position is 1. Please wait for a while or switch to other models for a smoother experience.
